@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        select option:first-child {
+            color: gray;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+
+
+        @media screen and (min-width: 800px) {
+            .container {
+                width: 50%;
+            }
+
+            .box {
+                float: left; 
+                margin: auto; 
+                width: 45%;
+            }
+
+            .box1 {
+                float: right; 
+                margin: auto; 
+                width: 45%;
+            }
+        }
+
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        nav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Custom styling for dropdowns */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown select {
+            appearance: none;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .dropdown select:focus {
+            outline: none;
+        }
+
+        .dropdown:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            width: 0;
+            height: 0;
+            margin-top: -3px;
+            border-width: 6px 6px 0 6px;
+            border-style: solid;
+            border-color: #4CAF50 transparent;
+            pointer-events: none;
+        }
+
+        /* Custom styling for radio buttons */
+        .radio-buttons {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 20px;
+        }
+
+        .radio-buttons label {
+            margin-right: 20px;
+            font-weight: normal;
+        }
+
+        .radio-buttons input[type="radio"] {
+            display: none;
+        }
+
+        .radio-buttons input[type="radio"]+span:before {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+        }
+
+        .radio-buttons input[type="radio"]:checked+span:before {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+
+        .popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f44336;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 999;
+            display: none;
+        }
+
+        .popup.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="#" class="active">College Predictor</a>
+    </nav>
+    <div class="container">
+        <h1>College Predictor</h1>
+        <form method="POST" action="/" onsubmit="return validateForm()">
+            <div class="row" style="width: 100%;">
+                <div class="box">
+                    <label>Rank:</label>
+                    <input type="number" name="rank" id="rank" required><br>
+
+                </div>
+
+                <div class="box1">
+                    <label>Course:</label>
+                    <select name="course" id="course" required>
+                        <option value="">Select a course</option>
+                    <!--  <option value="Computer Science">Computer Science</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Mechanical">Mechanical</option>
+                        <option value="ABC A">ABC A</option>-->
+                        <option value="AERONAUTICAL ENGINEERING">AERONAUTICAL ENGINEERING</option>
+                        <option value="AGRICULTURAL ENGINEERING">AGRICULTURAL ENGINEERING</option>
+                        <option value="ARTIFICIAL INTELLIGENCE">ARTIFICIAL INTELLIGENCE</option>
+                        <option value="ARTIFICIAL INTELLIGENCE AND DATA SCIENCE">ARTIFICIAL INTELLIGENCE AND DATA SCIENCE</option>
+                        <option value="ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING">ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING</option>
+                        <option value="AUTOMOBILE ENGINEERING">AUTOMOBILE ENGINEERING</option>
+                        <option value="B. PHARMACY (M.P.C. STREAM)">B. PHARMACY (M.P.C. STREAM)</option>
+                        <option value="BIO-MEDICAL ENGINEERING">BIO-MEDICAL ENGINEERING</option>
+                        <option value="BIO-TECHNOLOGY">BIO-TECHNOLOGY</option>
+                        <option value="BTECH MECHANICAL WITH MTECH MANUFACTURING SYSTEMS">BTECH MECHANICAL WITH MTECH MANUFACTURING SYSTEMS</option>
+                        <option value="BTECH MECHANICAL WITH MTECH THERMAL ENGG">BTECH MECHANICAL WITH MTECH THERMAL ENGG</option>
+                        <option value="CHEMICAL ENGINEERING">CHEMICAL ENGINEERING</option>
+                        <option value="CIVIL ENGINEERING">CIVIL ENGINEERING</option>
+                        <option value="COMPUTER ENGINEERING">COMPUTER ENGINEERING</option>
+                        <option value="COMPUTER ENGINEERING(SOFTWARE ENGINEERING)">COMPUTER ENGINEERING(SOFTWARE ENGINEERING)</option>
+                        <option value="COMPUTER SCIENCE & DESIGN">COMPUTER SCIENCE & DESIGN</option>
+                        <option value="COMPUTER SCIENCE & ENGINEERING (NETWORKS)">COMPUTER SCIENCE & ENGINEERING (NETWORKS)</option>
+                        <option value="COMPUTER SCIENCE AND BUSINESS SYSTEM">COMPUTER SCIENCE AND BUSINESS SYSTEM</option>
+                        <option value="COMPUTER SCIENCE AND ENGINEERING">COMPUTER SCIENCE AND ENGINEERING</option>
+                        <option value="COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)">COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)</option>
+                        <option value="COMPUTER SCIENCE AND ENGINEERING (CYBER SECURITY)">COMPUTER SCIENCE AND ENGINEERING (CYBER SECURITY)</option>
+                        <option value="COMPUTER SCIENCE AND ENGINEERING (DATA SCIENCE)">COMPUTER SCIENCE AND ENGINEERING (DATA SCIENCE)</option>
+                        <option value="COMPUTER SCIENCE AND ENGINEERING (IOT)">COMPUTER SCIENCE AND ENGINEERING (IOT)</option>
+                        <option value="COMPUTER SCIENCE AND INFORMATION TECHNOLOGY">COMPUTER SCIENCE AND INFORMATION TECHNOLOGY</option>
+                        <option value="COMPUTER SCIENCE AND TECHNOLOGY">COMPUTER SCIENCE AND TECHNOLOGY</option>
+                        <option value="CSE (IoT AND CYBER SECURITY INCLUDING BLOCK CHAIN TECHNOLOGY)">CSE (IoT AND CYBER SECURITY INCLUDING BLOCK CHAIN TECHNOLOGY)</option>
+                        <option value="DAIRYING">DAIRYING</option>
+                        <option value="DIGITAL TECHNIQUES FOR DESIGN AND PLANNING">DIGITAL TECHNIQUES FOR DESIGN AND PLANNING</option>
+                        <option value="ELECTRICAL AND ELECTRONICS ENGINEERING">ELECTRICAL AND ELECTRONICS ENGINEERING</option>
+                        <option value="ELECTRONICS AND COMMUNICATION ENGINEERING">ELECTRONICS AND COMMUNICATION ENGINEERING</option>
+                        <option value="ELECTRONICS AND COMPUTER ENGINEERING">ELECTRONICS AND COMPUTER ENGINEERING</option>
+                        <option value="ELECTRONICS AND INSTRUMENTATION ENGINEERING">ELECTRONICS AND INSTRUMENTATION ENGINEERING</option>
+                        <option value="ELECTRONICS AND TELEMATICS">ELECTRONICS AND TELEMATICS</option>
+                        <option value="ELECTRONICS COMMUNICATION AND INSTRUMENTATION ENGINEERING">ELECTRONICS COMMUNICATION AND INSTRUMENTATION ENGINEERING</option>
+                        <option value="FACILITIES AND SERVICES PLANNING">FACILITIES AND SERVICES PLANNING</option>
+                        <option value="FOOD TECHNOLOGY">FOOD TECHNOLOGY</option>
+                        <option value="MECHANICAL (MECHTRONICS) ENGINEERING">MECHANICAL (MECHTRONICS) ENGINEERING</option>
+                        <option value="MECHANICAL ENGINEERING">MECHANICAL ENGINEERING</option>
+                        <option value="METALLURGICAL ENGINEERING">METALLURGICAL ENGINEERING</option>
+                        <option value="METALLURGY AND MATERIAL ENGINEERING">METALLURGY AND MATERIAL ENGINEERING</option>
+                        <option value="MINING ENGINEERING">MINING ENGINEERING</option>
+                        <option value="PHARM - D (M.P.C. STREAM)">PHARM - D (M.P.C. STREAM)</option>
+                        <option value="PHARMACEUTICAL ENGINEERING">PHARMACEUTICAL ENGINEERING</option>
+                        <option value="PLANNING">PLANNING</option>
+                        <option value="TEXTILE TECHNOLOGY">TEXTILE TECHNOLOGY</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="width: 100%;">
+                <div class="box">
+                    <label>Gender:</label>
+                    <select name="gender" id="gender" required>
+                        <option value="">Select a gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="box1">
+                    <label>Caste:</label>
+                    <select name="caste" id="caste" required>
+                        <option value="">Select a caste</option>
+                        <option value="General">General</option>
+                        <option value="BCA">BC-A</option>
+                        <option value="BCB">BC-B</option>
+                        <option value="BCC">BC-C</option>
+                        <option value="BCA">BC-D</option>
+                        <option value="BCA">BC-E</option>
+                        <option value="EWS">EWS</option>
+                        <option value="SC">SC</option>
+                        <option value="ST">ST</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var rank = document.getElementById("rank").value;
+            var course = document.getElementById("course").value;
+            var gender = document.getElementById("gender").value;
+            var caste = document.getElementById("caste").value;
+
+            if (rank == "" || course == "" || gender == "" || caste == "") {
+                alert("Please fill in all fields");
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
