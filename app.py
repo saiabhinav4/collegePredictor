@@ -22,11 +22,12 @@ def predict():
         # get the form data submitted by the user
         course = request.form['course']
         gender = request.form['gender']
+        exam = request.form['exam']
         caste = request.form['caste']
         rank = int(request.form['rank'])
 
         # filter the data based on user input
-        filtered_data = data[(data['Course'] == course) & (data['Gender'] == gender) & (data['Caste'] == caste) & (data['Rank Range'] >= rank)]
+        filtered_data = data[(data['Course'] == course) & (data['Gender'] == gender) & (data['Exam'] == exam) & (data['Caste'] == caste) & (data['Rank Range'] >= rank)]
 
         # sort the data by rank range
         sorted_data = filtered_data.sort_values('Rank Range')
