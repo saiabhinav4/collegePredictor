@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+      <style>        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -76,7 +76,7 @@
 
 
 
-        @media screen and (min-width: 800px) {
+        @media screen and (min-width: 1050px) {
             .container {
                 width: 50%;
             }
@@ -84,14 +84,122 @@
             .box {
                 float: left; 
                 margin: auto; 
-                width: 45%;
+                width: 60%;
             }
 
             .box1 {
                 float: right; 
                 margin: auto; 
-                width: 45%;
+                width: 35%;
             }
+
+            .boxa1 {
+                float: left; 
+                margin: auto; 
+                width: 30%;
+            }
+
+
+            .boxa2 {
+                float: left; 
+                margin: auto; 
+                width: 40%;
+            }
+
+            .boxa3 {
+                float: right; 
+                margin: auto; 
+                width: 30%;
+            }
+
+            
+        }
+
+        @media screen and (max-width: 850px) {
+            .container {
+                width: 90%;
+            }
+
+           #h{
+            font-size:x-large;
+           }
+
+            .box {
+                float: left; 
+                margin: auto; 
+                width: 100%;
+            }
+
+            .box1 {
+                float: right; 
+                margin: auto; 
+                width: 100%;
+            }
+
+            .boxa1 {
+                float: left; 
+                margin: auto; 
+                width: 100%;
+            }
+
+
+            .boxa2 {
+                float: left; 
+                margin: auto; 
+                width: 100%;
+            }
+
+            .boxa3 {
+                float: right; 
+                margin: auto; 
+                width: 100%;
+            }
+
+            
+        }
+
+
+        @media screen and (min-width: 851px) and (max-width: 1049px)  {
+            .container {
+                width: 70%;
+            }
+
+           #h{
+            font-size:x-large;
+           }
+
+            .box {
+                float: left; 
+                margin: auto; 
+                width: 100%;
+            }
+
+            .box1 {
+                float: right; 
+                margin: auto; 
+                width: 100%;
+            }
+
+            .boxa1 {
+                float: left; 
+                margin: auto; 
+                width: 100%;
+            }
+
+
+            .boxa2 {
+                float: left; 
+                margin: auto; 
+                width: 100%;
+            }
+
+            .boxa3 {
+                float: right; 
+                margin: auto; 
+                width: 100%;
+            }
+
+            
         }
 
         nav {
@@ -201,20 +309,49 @@
 </head>
 
 <body>
+
     <nav>
-        <a href="#" class="active">College Predictor</a>
+        <a href="https://trueradiations.com" class="active">College Predictor</a>
     </nav>
+
     <div class="container">
-        <h1>College Predictor</h1>
+        <h1 class="font-weight-bold" id="h">Eamcet College Predictor</h1>
+
         <form method="POST" action="/" onsubmit="return validateForm()">
             <div class="row" style="width: 100%;">
-                <div class="box">
+                <div class="boxa1">
                     <label>Rank:</label>
-                    <input type="number" name="rank" id="rank" required><br>
+                    <input type="number" name="rank" id="rank" required placeholder="10000"><br>
 
                 </div>
 
-                <div class="box1">
+
+                <div class="boxa2">
+                    <label>Entrance Exam:</label>
+                    <select name="exam" id="exam" required>
+                        <option value="">Select Exam</option>
+                        <option value="tseamcet">TS-Eamcet</option>
+                        <option value="apeamcet">AP-Eamcet</option>
+                    </select>
+                </div>
+
+
+                <div class="boxa3">
+                    <label>Gender:</label>
+                    <select name="gender" id="gender" required>
+                        <option value="">Select a gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+
+
+
+                
+            </div>
+            <div class="row" style="width: 100%;">
+               
+                <div class="box">
                     <label>Course:</label>
                     <select name="course" id="course" required>
                         <option value="">Select a course</option>
@@ -269,16 +406,12 @@
                         <option value="TEXTILE TECHNOLOGY">TEXTILE TECHNOLOGY</option>
                     </select>
                 </div>
-            </div>
-            <div class="row" style="width: 100%;">
-                <div class="box">
-                    <label>Gender:</label>
-                    <select name="gender" id="gender" required>
-                        <option value="">Select a gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-                </div>
+
+               
+
+
+
+
                 <div class="box1">
                     <label>Caste:</label>
                     <select name="caste" id="caste" required>
@@ -315,6 +448,7 @@
             }
         }
     </script>
+
 </body>
 
 </html>
